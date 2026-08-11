@@ -8,7 +8,7 @@ LOG_FILE="$LOGS_FOLDER/$0.log"
 
 USERID=$(id -u)
 TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
-if [ $SUPERID -ne 0 ]; then
+if [ $USERID -ne 0 ]; then
     echo  "$TIMESTAMP [ERROR] Please run this script with root access"  | tee -a $LOG_FILE
     exit 1
 fi
