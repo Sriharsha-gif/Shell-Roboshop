@@ -14,7 +14,7 @@ if [ $SUPERID -ne 0 ]; then
 fi
 
 VALIDATE(){
-    if [ $1 -ne 0]; then
+    if [ $1 -ne 0 ]; then
         echo "$TIMESTAMP [ERROR] $2....FAILURE" | tee -a $LOG_FILE
         exit 1
     else
