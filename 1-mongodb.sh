@@ -14,7 +14,7 @@ Y="\e[33m"
 N="\e[0m"
 TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
 
-trap 'echo "error at $LINENO", command: $Bash_COMMNAD"'ERR
+trap 'echo "error at $LINENO", command: $Bash_COMMNAD"' ERR
 
 if [ $USERID -ne 0 ]; then
     echo -e "$TIMESTAMP [ERROR] $R Please run this script with root access $N" | tee -a $LOGS_FILE
