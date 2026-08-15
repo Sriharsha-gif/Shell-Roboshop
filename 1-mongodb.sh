@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 LOGS_FOLDER="/var/log/roboshop"
 sudo mkdir -p $LOGS_FOLDER
 sudo chown -R ec2-user:ec2-user $LOGS_FOLDER
@@ -12,6 +13,8 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
+
+trap 'echo "error at $LINENO",command: $Bash_COMMNAD"'ERR
 
 if [ $USERID -ne 0 ]; then
     echo -e "$TIMESTAMP [ERROR] $R Please run this script with root access $N" | tee -a $LOGS_FILE
@@ -32,3 +35,4 @@ VALIDATE $? "Adding Mongo repo"
 
 dnf install mongodb-org -y &>> $LOGS_FILE
 VALIDATE $? "Installing MongoDB"
+
